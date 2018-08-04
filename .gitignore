@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/checkstyleidea.tmp/
+.idea/workspace.xml
+SpringCloud.iml
+consumer-user/.mvn/
+consumer-user/mvnw
+consumer-user/mvnw.cmd
+eureka-server/.mvn/
+eureka-server/mvnw
+eureka-server/mvnw.cmd
+provide-ticket/.mvn/
+provide-ticket/mvnw
+provide-ticket/mvnw.cmd
