@@ -1,14 +1,16 @@
 package cn.learn.igame.controller;
 
-import cn.learn.igame.model.Game;
+import cn.learn.igame.application.game.domain.Game;
+import cn.learn.igame.base.BaseResponse;
+import cn.learn.igame.base.BaseResponse.Builder;
 import java.util.List;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 游戏Controller 只是拿来练手,就不写多层结构了,只在controller进行crud操作.
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  * @author shaoyijiong
  * @date 2018/7/18
  */
-@Controller
+@RestController
 public class GameController {
 
   /**
@@ -25,11 +27,11 @@ public class GameController {
    * @return 游戏列表
    */
   @GetMapping("/games")
-  public String list(Model model) {
+  public BaseResponse list() {
     Game game = new Game();
     List<Game> games = game.selectAll();
-    model.addAttribute("games", games);
-    return "game/list";
+    Builder<List<Game>> builder = new Builder<>();
+    return builder.success().data(games).build();
   }
 
   /**
@@ -74,6 +76,12 @@ public class GameController {
     return "redirect:/games";
   }
 
+  /**
+   * 删除游戏.
+   *
+   * @param id 游戏id
+   * @return 游戏
+   */
   @DeleteMapping("/game/{id}")
   public String deleteGame(@PathVariable Integer id) {
     Game game = new Game(id);

@@ -1,6 +1,6 @@
-package cn.learn.igame.model;
+package cn.learn.igame.application.game.domain;
 
-import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * 用户实体类.
  *
- * @author win
+ * @author shaoyijiong
  * @date 2018-6-30
  */
 @Getter

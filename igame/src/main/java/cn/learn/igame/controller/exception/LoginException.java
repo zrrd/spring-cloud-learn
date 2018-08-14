@@ -1,5 +1,6 @@
 package cn.learn.igame.controller.exception;
 
+import cn.learn.igame.base.BaseException;
 
 /**
  * 登录异常.

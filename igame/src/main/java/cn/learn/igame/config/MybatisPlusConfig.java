@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
  * @since 2018/6/30
  */
 @Configuration
-@MapperScan(basePackages = {"cn.learn.igame.mapper"})
+@MapperScan(basePackages = {"cn.learn.igame.application.game.domain.repository",
+    "cn.learn.igame.query.mapper"})
 public class MybatisPlusConfig {
 
 }

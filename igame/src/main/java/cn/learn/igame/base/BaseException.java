@@ -1,4 +1,4 @@
-package cn.learn.igame.controller.exception;
+package cn.learn.igame.base;
 
 import lombok.Getter;
 

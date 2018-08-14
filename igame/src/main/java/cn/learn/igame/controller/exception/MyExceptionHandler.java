@@ -1,5 +1,6 @@
 package cn.learn.igame.controller.exception;
 
+import cn.learn.igame.base.BaseException;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.bind.annotation.ControllerAdvice;
