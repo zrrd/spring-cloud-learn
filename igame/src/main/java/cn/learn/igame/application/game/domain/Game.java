@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * 游戏实体类.
@@ -14,6 +16,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 public class Game extends Model<Game> {
 
   private Integer id;
@@ -31,9 +35,6 @@ public class Game extends Model<Game> {
   @Override
   protected Serializable pkVal() {
     return id;
-  }
-
-  public Game() {
   }
 
   public Game(Integer id) {
