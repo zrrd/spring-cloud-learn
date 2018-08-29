@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class GameController {
 
-  @Value("${microservice.prefix}")
+  @Value("${micro.url-prefix}")
   private String prefix;
 
   private final RestTemplate restTemplate;

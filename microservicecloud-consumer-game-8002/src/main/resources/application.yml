@@ -1,4 +1,4 @@
 server:
   port: 8002
-microservice:
-  prefix: http://127.0.0.1:8001/
+micro:
+  url-prefix: http://127.0.0.1:8001/
