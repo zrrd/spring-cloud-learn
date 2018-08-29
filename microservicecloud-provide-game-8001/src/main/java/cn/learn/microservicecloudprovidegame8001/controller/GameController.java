@@ -1,6 +1,6 @@
 package cn.learn.microservicecloudprovidegame8001.controller;
 
-import cn.learn.igame.application.game.domain.Game;
+import cn.learn.microservicecloudprovidegame8001.domain.Game;
 import cn.learn.igame.base.BaseResponse;
 import cn.learn.igame.base.BaseResponse.ResponseBuilder;
 import java.util.List;

@@ -2,6 +2,7 @@ package cn.learn.microservicecloudconsumergame8002.controller;
 
 import cn.learn.igame.base.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -14,6 +15,9 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 public class GameController {
+
+  @Value("${microservice.prefix}")
+  private String prefix;
 
   private final RestTemplate restTemplate;
 
@@ -29,6 +33,6 @@ public class GameController {
    */
   @GetMapping("/games")
   public BaseResponse list() {
-    return restTemplate.getForObject("http://localhost:8081/games", BaseResponse.class);
+    return restTemplate.getForObject(prefix + "games", BaseResponse.class);
   }
 }

@@ -1,4 +1,4 @@
-package cn.learn.igame.application.game.domain;
+package cn.learn.microservicecloudprovidegame8001.domain;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;

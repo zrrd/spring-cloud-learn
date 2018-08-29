@@ -1,6 +1,6 @@
-package cn.learn.igame.query.mapper;
+package cn.learn.microservicecloudprovidegame8001.mapper;
 
-import cn.learn.igame.application.game.domain.Steam;
+import cn.learn.microservicecloudprovidegame8001.domain.Steam;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 

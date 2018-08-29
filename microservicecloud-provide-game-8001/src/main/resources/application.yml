@@ -11,7 +11,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.learn.igame.application.game.domain
+  typeAliasesPackage: cn.learn.microservicecloudprovidegame8001.domain
   #typeEnumsPackage: com.baomidou.springboot.entity.enums
   global-config:
     # 数据库相关配置

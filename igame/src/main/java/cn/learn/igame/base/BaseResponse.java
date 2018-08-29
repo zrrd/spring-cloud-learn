@@ -1,10 +1,9 @@
 package cn.learn.igame.base;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * 基础响应.
@@ -12,9 +11,9 @@ import lombok.Setter;
  * @author 邵益炯
  * @date 2018/8/14
  */
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode
+@AllArgsConstructor
 public class BaseResponse<T> implements Response {
 
   /**

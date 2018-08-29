@@ -1,6 +1,6 @@
-package cn.learn.igame.application.game.domain.repository;
+package cn.learn.microservicecloudprovidegame8001.domain.repository;
 
-import cn.learn.igame.application.game.domain.Steam;
+import cn.learn.microservicecloudprovidegame8001.domain.Steam;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 

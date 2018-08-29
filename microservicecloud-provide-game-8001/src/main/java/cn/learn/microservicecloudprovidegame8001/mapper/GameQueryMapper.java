@@ -1,6 +1,6 @@
-package cn.learn.igame.query.mapper;
+package cn.learn.microservicecloudprovidegame8001.mapper;
 
-import cn.learn.igame.application.game.domain.Game;
+import cn.learn.microservicecloudprovidegame8001.domain.Game;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import java.util.List;
 
