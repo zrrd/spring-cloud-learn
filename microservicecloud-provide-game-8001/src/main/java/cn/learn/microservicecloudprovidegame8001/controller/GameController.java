@@ -1,10 +1,9 @@
-package cn.learn.igame.controller;
+package cn.learn.microservicecloudprovidegame8001.controller;
 
 import cn.learn.igame.application.game.domain.Game;
 import cn.learn.igame.base.BaseResponse;
-import cn.learn.igame.base.BaseResponse.Builder;
+import cn.learn.igame.base.BaseResponse.ResponseBuilder;
 import java.util.List;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 游戏Controller 只是拿来练手,就不写多层结构了,只在controller进行crud操作.
+ * provide层的controller.
  *
  * @author shaoyijiong
  * @date 2018/7/18
@@ -27,21 +26,10 @@ public class GameController {
    * @return 游戏列表
    */
   @GetMapping("/games")
-  public BaseResponse list() {
+  public BaseResponse<List<Game>> list() {
     Game game = new Game();
     List<Game> games = game.selectAll();
-    Builder<List<Game>> builder = new Builder<>();
-    return builder.success().data(games).build();
-  }
-
-  /**
-   * 添加游戏页面.
-   *
-   * @return 添加页面
-   */
-  @GetMapping("/game")
-  public String add() {
-    return "game/add";
+    return new ResponseBuilder<>(games).build();
   }
 
   /**
@@ -51,9 +39,10 @@ public class GameController {
    * @return 返回到游戏列表页面
    */
   @PostMapping("/game")
-  public String add(Game game) {
+  public BaseResponse add(Game game) {
     game.insert();
-    return "redirect:/games";
+    return new ResponseBuilder<>(game).build();
+
   }
 
   /**
@@ -62,18 +51,24 @@ public class GameController {
    * @return 修改员工页面
    */
   @GetMapping("/game/{id}")
-  public String toEditPage(@PathVariable Integer id, Model model) {
+  public BaseResponse toEditPage(@PathVariable Integer id) {
     Game game = new Game(id);
     game = game.selectById();
-    model.addAttribute("game", game);
-    //回到修改页面,就是增加页面
-    return "game/add";
+    return new ResponseBuilder<>(game).build();
+
   }
 
+  /**
+   * 修改游戏.
+   *
+   * @param game 游戏参数
+   * @return 修改结果
+   */
   @PutMapping("/game")
-  public String updateGame(Game game) {
+  public BaseResponse updateGame(Game game) {
     game.updateById();
-    return "redirect:/games";
+    return new ResponseBuilder<>(game).build();
+
   }
 
   /**
@@ -83,9 +78,10 @@ public class GameController {
    * @return 游戏
    */
   @DeleteMapping("/game/{id}")
-  public String deleteGame(@PathVariable Integer id) {
+  public BaseResponse deleteGame(@PathVariable Integer id) {
     Game game = new Game(id);
     game.deleteById();
-    return "redirect:/games";
+    return new ResponseBuilder<>(game).build();
+
   }
 }

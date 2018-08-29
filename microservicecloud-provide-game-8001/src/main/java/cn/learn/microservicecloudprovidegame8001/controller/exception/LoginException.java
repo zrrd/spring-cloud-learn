@@ -1,4 +1,4 @@
-package cn.learn.igame.controller.exception;
+package cn.learn.microservicecloudprovidegame8001.controller.exception;
 
 import cn.learn.igame.base.BaseException;
 

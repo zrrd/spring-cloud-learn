@@ -1,6 +1,6 @@
-package cn.learn.igame.controller;
+package cn.learn.microservicecloudprovidegame8001.controller;
 
-import cn.learn.igame.controller.exception.LoginException;
+import cn.learn.microservicecloudprovidegame8001.controller.exception.LoginException;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;

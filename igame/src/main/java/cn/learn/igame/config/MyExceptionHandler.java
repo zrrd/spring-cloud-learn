@@ -5,6 +5,7 @@ import java.net.BindException;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  */
 @RestControllerAdvice
 @Slf4j
-public class ExceptionHandler {
+public class MyExceptionHandler {
 
   /**
    * 异常处理器.
@@ -25,7 +26,7 @@ public class ExceptionHandler {
    * @return 自定义的异常信息, json格式
    */
   @ResponseBody
-  @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
+  @ExceptionHandler(Exception.class)
   public Map<String, Object> handleException(Exception e) {
     Map<String, Object> map = new HashMap<>(2);
     if (e instanceof BaseException) {

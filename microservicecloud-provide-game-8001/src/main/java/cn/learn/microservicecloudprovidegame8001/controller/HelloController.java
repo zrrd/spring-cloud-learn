@@ -1,11 +1,11 @@
-package cn.learn.igame.controller;
+package cn.learn.microservicecloudprovidegame8001.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Hello Controller
+ * Hello Controller.
  *
  * @author shaoyijiong
  * @date 2018/7/6

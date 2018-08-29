@@ -1,7 +1,9 @@
 package cn.learn.igame.base;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -36,16 +38,28 @@ public class BaseResponse<T> implements Response {
     return data;
   }
 
-  public static class Builder<T> {
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class ResponseBuilder<T> {
 
-    private Integer code;
-    private String message;
+    /**
+     * 默认返回code为200.
+     */
+    private Integer code = 200;
+    /**
+     * 默认返回响应为操作成功.
+     */
+    private String message = "操作成功";
     private T data;
+
+    public ResponseBuilder(T data) {
+      this.data = data;
+    }
 
     /**
      * 操作成功.
      */
-    public Builder<T> success() {
+    public ResponseBuilder<T> success() {
       this.code = 200;
       this.message = "操作成功";
       return this;
@@ -54,28 +68,53 @@ public class BaseResponse<T> implements Response {
     /**
      * 操作失败.
      */
-    public Builder<T> fail() {
+    public ResponseBuilder<T> fail() {
       this.code = 500;
       this.message = "操作失败";
       return this;
     }
 
     /**
+     * 自定义message.
+     */
+    public ResponseBuilder<T> message(String message) {
+      this.message = message;
+      return this;
+    }
+
+    /**
+     * 自定义code.
+     */
+    public ResponseBuilder<T> code(int code) {
+      this.code = code;
+      return this;
+    }
+
+    /**
+     * 自定义message和code.
+     */
+    public ResponseBuilder<T> codeMessage(int code, String message) {
+      this.code = code;
+      this.message = message;
+      return this;
+    }
+
+    /**
      * 构建参数.
      */
-    public Builder<T> data(T data) {
+    public ResponseBuilder<T> data(T data) {
       this.data = data;
       return this;
     }
 
-    public BaseResponse build() {
+    public BaseResponse<T> build() {
       return new BaseResponse<>(this);
     }
 
   }
 
 
-  private BaseResponse(Builder<T> builder) {
+  private BaseResponse(ResponseBuilder<T> builder) {
     code = builder.code;
     message = builder.message;
     data = builder.data;
