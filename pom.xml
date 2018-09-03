@@ -13,6 +13,7 @@
     <module>igame</module>
     <module>microservicecloud-provide-game-8001</module>
     <module>microservicecloud-consumer-game-8002</module>
+    <module>microservicecloud-eureka-7001</module>
   </modules>
 
   <build>

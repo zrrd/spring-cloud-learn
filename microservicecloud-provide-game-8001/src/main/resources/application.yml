@@ -1,12 +1,12 @@
 spring:
-#数据库链接池 HikariCP连接池
+  #数据库链接池 HikariCP连接池
   datasource:
-      hikari:
-        jdbc-url: jdbc:mysql://localhost:3306/games?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-        password: 123456
-        driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/games?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    hikari:
+      jdbc-url: jdbc:mysql://47.99.73.15:3306/games?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.99.73.15:3306/games?useUnicode=true&characterEncoding=utf-8&useSSL=false
 #mybatis
 mybatis-plus:
   mapper-locations: classpath:/mapper/*/*Mapper.xml
@@ -39,3 +39,26 @@ mybatis-plus:
   #  level: warn
 server:
   port: 8001
+
+# Discovery Server Access
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    #eureka显示ip
+    prefer-ip-address: true
+    #eureka status的显示的名字
+    instance-id: provide-game
+
+#项目监控配置  具体看印象笔记  自定义info config
+management:
+  endpoint:
+    info:
+      enabled: true
+#自定义info信息
+info:
+  app:
+    encoding: UTF-8
+    java.source: 1.8
+    java.traget: 1.8
