@@ -1,11 +1,12 @@
 server:
-  port: 7001
+  port: 7003
 
 eureka:
   instance:
-    hostname: eureka7001.com  #eureka服务端的实例名称 在host中 127.0.0.1 eureka7001.com  域名映射
+    hostname: eureka7003.com  #eureka服务端的实例名称 在host中 127.0.0.1 eureka7003.com
   client:
     register-with-eureka: false #不向注册中心注册自己
     fetch-registry: false #false表示自己端就是注册中心,我的职责是维护服务实例,并不需要检索服务
+    #与其他服务构建集群环境
     service-url:
-      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/

@@ -1,4 +1,4 @@
-package cn.learn.microservicecloudeureka7001;
+package cn.learn.microservicecloudeureka7002;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
