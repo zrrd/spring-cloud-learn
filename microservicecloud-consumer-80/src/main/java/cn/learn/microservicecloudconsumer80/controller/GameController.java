@@ -1,8 +1,7 @@
-package cn.learn.microservicecloudconsumergame8002.controller;
+package cn.learn.microservicecloudconsumer80.controller;
 
 import cn.learn.igame.base.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +15,14 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class GameController {
 
-  @Value("${micro.url-prefix}")
-  private String prefix;
+  ///通过ip访问
+  //@Value("${micro.url-prefix}")
+  //private String prefix;
+
+  /**
+   * 通过eureka服务名调用.
+   */
+  private static final String REST_URL_PREFIX = "http://PROVIDE-GAME";
 
   private final RestTemplate restTemplate;
 
@@ -33,6 +38,6 @@ public class GameController {
    */
   @GetMapping("/games")
   public BaseResponse list() {
-    return restTemplate.getForObject(prefix + "games", BaseResponse.class);
+    return restTemplate.getForObject(REST_URL_PREFIX + "/games", BaseResponse.class);
   }
 }

@@ -1,16 +1,17 @@
-package cn.learn.microservicecloudconsumergame8002.config;
+package cn.learn.microservicecloudconsumer80.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * RestTemplate.
+ * RestTemplate配置类.
  *
- * @author shaoyijiong
- * @date 2018/7/26
+ * @author 邵益炯
+ * @date 2018/9/6
  */
 @Configuration
 public class RestTemplateConfig {
@@ -22,9 +23,12 @@ public class RestTemplateConfig {
     this.restTemplateBuilder = restTemplateBuilder;
   }
 
+  /**
+   * 通过LoadBalanced来进行负载均衡.
+   */
   @Bean
+  @LoadBalanced
   public RestTemplate restTemplate() {
     return restTemplateBuilder.build();
   }
-
 }

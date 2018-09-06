@@ -1,4 +1,4 @@
-package cn.learn.microservicecloudconsumergame8002;
+package cn.learn.microservicecloudconsumer80;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MicroservicecloudConsumerGame8002ApplicationTests {
+public class MicroservicecloudConsumer80ApplicationTests {
 
   @Test
   public void contextLoads() {
