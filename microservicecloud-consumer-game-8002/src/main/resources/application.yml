@@ -1,4 +1,0 @@
-server:
-  port: 8002
-micro:
-  url-prefix: http://127.0.0.1:8001/

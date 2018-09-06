@@ -12,7 +12,9 @@
   <modules>
     <module>igame</module>
     <module>microservicecloud-provide-game-8001</module>
-    <module>microservicecloud-consumer-game-8002</module>
+    <module>microservicecloud-provide-game-8002</module>
+    <module>microservicecloud-provide-game-8003</module>
+    <module>microservicecloud-consumer-80</module>
     <module>microservicecloud-eureka-7001</module>
     <module>microservicecloud-eureka-7002</module>
     <module>microservicecloud-eureka-7003</module>
