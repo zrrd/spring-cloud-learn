@@ -46,6 +46,18 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.7</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+    <!--3.0版本与2.*不兼容-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>3.0-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>

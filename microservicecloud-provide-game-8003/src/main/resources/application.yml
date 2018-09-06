@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8003
 
 # Discovery Server Access
 eureka:
@@ -11,7 +11,7 @@ eureka:
     #eureka显示ip
     prefer-ip-address: true
     #eureka status的显示的名字
-    instance-id: provide-game-8002
+    instance-id: provide-game-8003
 
 #项目监控配置  具体看印象笔记  自定义info config
 management:

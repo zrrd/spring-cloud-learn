@@ -1,4 +1,4 @@
-package cn.learn.microservicecloudprovidegame8002.controller;
+package cn.learn.microservicecloudprovidegame8003.controller;
 
 import cn.learn.igame.base.BaseResponse;
 import cn.learn.igame.base.BaseResponse.ResponseBuilder;

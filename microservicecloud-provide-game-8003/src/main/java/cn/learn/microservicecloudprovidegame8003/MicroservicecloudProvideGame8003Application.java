@@ -1,4 +1,4 @@
-package cn.learn.microservicecloudprovidegame8001;
+package cn.learn.microservicecloudprovidegame8003;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,9 +15,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 //服务发现
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class MicroservicecloudProvideGame8001Application {
+public class MicroservicecloudProvideGame8003Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(MicroservicecloudProvideGame8001Application.class, args);
+    SpringApplication.run(MicroservicecloudProvideGame8003Application.class, args);
   }
 }
