@@ -10,7 +10,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>igame</module>
     <module>microservicecloud-provide-game-8001</module>
     <module>microservicecloud-provide-game-8002</module>
     <module>microservicecloud-provide-game-8003</module>

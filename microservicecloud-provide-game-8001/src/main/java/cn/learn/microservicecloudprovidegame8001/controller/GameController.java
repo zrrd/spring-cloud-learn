@@ -4,7 +4,10 @@ import cn.learn.igame.base.BaseResponse;
 import cn.learn.igame.base.BaseResponse.ResponseBuilder;
 import cn.learn.igame.domain.Game;
 import java.util.List;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GameController {
 
+  @Autowired
+  DataSource dataSource;
+
   /**
    * 查询所有游戏信息,返回游戏列表页面.
    *
@@ -29,6 +35,7 @@ public class GameController {
    */
   @GetMapping("/games")
   public BaseResponse<List<Game>> list() {
+    System.out.println(dataSource);
     log.info("8001被访问了");
     Game game = new Game();
     List<Game> games = game.selectAll();
