@@ -1,5 +1,6 @@
 package cn.learn.igame.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +18,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @NoArgsConstructor
-@Accessors(chain = true)
+@TableName("game")
 public class Game extends Model<Game> {
 
   private Integer id;

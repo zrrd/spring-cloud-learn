@@ -1,9 +1,10 @@
 package cn.learn.microservicecloudprovidegame8001.controller;
 
-import cn.learn.igame.domain.Game;
 import cn.learn.igame.base.BaseResponse;
 import cn.learn.igame.base.BaseResponse.ResponseBuilder;
+import cn.learn.igame.domain.Game;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author shaoyijiong
  * @date 2018/7/18
  */
+@Slf4j
 @RestController
 public class GameController {
 
@@ -27,6 +29,7 @@ public class GameController {
    */
   @GetMapping("/games")
   public BaseResponse<List<Game>> list() {
+    log.info("8001被访问了");
     Game game = new Game();
     List<Game> games = game.selectAll();
     return new ResponseBuilder<>(games).build();

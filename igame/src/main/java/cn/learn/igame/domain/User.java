@@ -1,5 +1,6 @@
 package cn.learn.igame.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@TableName("user")
 public class User extends Model<User> {
 
   private Integer id;

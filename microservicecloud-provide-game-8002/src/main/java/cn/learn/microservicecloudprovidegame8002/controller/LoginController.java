@@ -1,6 +1,6 @@
 package cn.learn.microservicecloudprovidegame8002.controller;
 
-import cn.learn.microservicecloudprovidegame8003.controller.exception.LoginException;
+import cn.learn.microservicecloudprovidegame8002.controller.exception.LoginException;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;

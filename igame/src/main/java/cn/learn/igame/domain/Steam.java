@@ -1,5 +1,6 @@
 package cn.learn.igame.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +16,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@TableName("steam")
 public class Steam extends Model<Steam> {
 
   private Integer id;
