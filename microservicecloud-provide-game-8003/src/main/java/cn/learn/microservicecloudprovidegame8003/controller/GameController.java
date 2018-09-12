@@ -29,7 +29,7 @@ public class GameController {
    */
   @GetMapping("/games")
   public BaseResponse<List<Game>> list() {
-    log.info("8002被访问了");
+    log.info("8003被访问了");
     Game game = new Game();
     List<Game> games = game.selectAll();
     return new ResponseBuilder<>(games).build();
