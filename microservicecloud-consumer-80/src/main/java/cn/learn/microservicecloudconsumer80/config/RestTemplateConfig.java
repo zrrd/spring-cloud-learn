@@ -24,7 +24,7 @@ public class RestTemplateConfig {
   }
 
   /**
-   * 通过LoadBalanced来进行负载均衡.
+   * 通过LoadBalanced来进行负载均衡. 默认是通过轮询的方式
    */
   @Bean
   @LoadBalanced
