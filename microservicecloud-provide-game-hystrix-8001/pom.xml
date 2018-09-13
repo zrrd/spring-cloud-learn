@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.learn</groupId>
-  <artifactId>microservicecloud-eureka-7001</artifactId>
+  <artifactId>microservicecloud-provide-game-hystrix-8001</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>microservicecloud-eureka-7001</name>
+  <name>microservicecloud-provide-game-hystrix-8001</name>
   <description>Demo project for Spring Boot</description>
 
   <parent>
@@ -28,18 +28,40 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <!--引用到igame包,通用属性包-->
+    <dependency>
+      <groupId>cn.learn</groupId>
+      <artifactId>igame</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!--eureka-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-actuator</artifactId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <version>2.0.4.RELEASE</version>
+    </dependency>
+    <!-- hystrix的依赖 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
     </dependency>
   </dependencies>
 
