@@ -1,4 +1,4 @@
-package cn.learn.microservicecloudconsumer80.controller;
+package cn.learn.microservicecloudconsumerfeign.controller;
 
 import cn.learn.igame.base.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -55,3 +55,6 @@ microservicecloud-provide-game-8001/mvnw
 microservicecloud-provide-game-8001/mvnw.cmd
 microservicecloud-provide-game-8002/src/test/
 microservicecloud-provide-game-8003/src/test/
+.mvn/
+mvnw
+mvnw.cmd
