@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 /**
  * 自定义的负载均衡算法
  */
-@RibbonClient(configuration = MySelfRule.class)
+@RibbonClient(configuration = MySelfRule.class,name = "syj_ribbon")
 public class MicroservicecloudConsumer80Application {
 
   public static void main(String[] args) {

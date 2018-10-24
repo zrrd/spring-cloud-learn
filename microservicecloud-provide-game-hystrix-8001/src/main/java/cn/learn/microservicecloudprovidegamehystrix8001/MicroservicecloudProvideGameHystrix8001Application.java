@@ -19,11 +19,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 //开启熔断器
 @EnableCircuitBreaker
-public class MicroservicecloudProvideGame8001Application {
+public class MicroservicecloudProvideGameHystrix8001Application {
 
   public static void main(String[] args) {
     Class[] classes = new Class[2];
-    classes[0] = MicroservicecloudProvideGame8001Application.class;
+    classes[0] = MicroservicecloudProvideGameHystrix8001Application.class;
     classes[1] = IgameApplication.class;
     SpringApplication.run(classes, args);
   }

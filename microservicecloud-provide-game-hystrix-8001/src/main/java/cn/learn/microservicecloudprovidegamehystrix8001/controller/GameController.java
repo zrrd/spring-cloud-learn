@@ -55,14 +55,18 @@ public class GameController {
    *
    * @return 修改员工页面
    */
-  //异常出现后 使用 hystrixGet 方法返回调用
+  //异常出现后 使用 hystrixGet 方法返回调用   aop类似异常通知
   @HystrixCommand(fallbackMethod = "hystrixGet")
   @GetMapping("/game/{id}")
   public BaseResponse toEditPage(@PathVariable Integer id) {
     Game game = new Game(id);
     game = game.selectById();
-    return new ResponseBuilder<>(game).build();
+    if (game == null) {
+      //故意手动抛出异常
+      throw new RuntimeException("没有对应的id信息");
+    }
 
+    return new ResponseBuilder<>(game).build();
   }
 
   public BaseResponse hystrixGet() {

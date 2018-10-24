@@ -3,6 +3,7 @@ package cn.learn.microservicecloudconsumer80.controller;
 import cn.learn.igame.base.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,4 +42,11 @@ public class GameController {
   public BaseResponse list() {
     return restTemplate.getForObject(REST_URL_PREFIX + "/games", BaseResponse.class);
   }
+
+  @GetMapping("/game/{id}")
+  public BaseResponse get(@PathVariable int id) {
+    return restTemplate.getForObject(REST_URL_PREFIX + "/game/{id}", BaseResponse.class, id);
+  }
+
+
 }
