@@ -5,3 +5,5 @@
 4. eureka     服务注册的服务端 7001 7002 7003 共同实现集群功能
 5. ribbon     通过ribbon  80 客户端的负载均衡  @LoadBalanced 
 6. hystrix    带服务熔断机制的服务提供者  用于放在链式调用中的雪崩 (客户端)
+7. hystrix dashboard   可视化服务监控
+8. zuul       服务网关  用于过滤与路由

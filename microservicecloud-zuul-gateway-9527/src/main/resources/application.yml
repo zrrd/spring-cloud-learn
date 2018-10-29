@@ -1,9 +1,8 @@
 server:
-  port: 8001
+  port: 9527
 spring:
   application:
-    #这个3个微服务提供者不能不同
-    name: PROVIDE-GAME
+    name: ZUUL-GATEWAY
 # Discovery Server Access
 eureka:
   client:
@@ -14,7 +13,7 @@ eureka:
     #eureka显示ip
     prefer-ip-address: true
     #eureka status的显示的名字
-    instance-id: provide-game-8001
+    instance-id: gateway-9527.com
 
 #项目监控配置  具体看印象笔记  自定义info config
 management:
@@ -27,3 +26,13 @@ info:
     encoding: UTF-8
     java.source: 1.8
     java.traget: 1.8
+    version: $project.version$
+#自定义服务映射规则
+zuul:
+  routes:
+    #服务名          映射地址  http://localhost:9527/test/game/1
+    PROVIDE-GAME:  /test/**
+  #忽略原来真实名字    这样就访问不了了 http://localhost:9527/provide-game/game/1
+  ignored-services: "*"
+  #统一前缀
+  prefix: /syj
