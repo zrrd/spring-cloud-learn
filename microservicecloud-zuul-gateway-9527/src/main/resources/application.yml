@@ -36,3 +36,5 @@ zuul:
   ignored-services: "*"
   #统一前缀
   prefix: /syj
+
+
