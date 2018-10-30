@@ -6,14 +6,35 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="consumer-user" />
-        <module name="eureka-server" />
-        <module name="provide-ticket" />
+        <module name="igame" />
+        <module name="microservicecloud-consumer-80" />
+        <module name="microservicecloud-eureka-7001" />
+        <module name="microservicecloud-eureka-7002" />
+        <module name="microservicecloud-eureka-7003" />
+        <module name="microservicecloud-hystrix-dashboard" />
+        <module name="microservicecloud-provide-game-8001" />
+        <module name="microservicecloud-provide-game-8002" />
+        <module name="microservicecloud-provide-game-8003" />
+        <module name="microservicecloud-provide-game-hystrix-8001" />
+        <module name="microservicecloud-zuul-gateway-9527" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="consumer-user" target="1.8" />
       <module name="eureka-server" target="1.8" />
+      <module name="igame" target="1.8" />
+      <module name="microservicecloud-consumer-80" target="1.8" />
+      <module name="microservicecloud-consumer-feign" target="1.8" />
+      <module name="microservicecloud-consumer-game-80" target="1.8" />
+      <module name="microservicecloud-eureka-7001" target="1.8" />
+      <module name="microservicecloud-eureka-7002" target="1.8" />
+      <module name="microservicecloud-eureka-7003" target="1.8" />
+      <module name="microservicecloud-hystrix-dashboard" target="1.8" />
+      <module name="microservicecloud-provide-game-8001" target="1.8" />
+      <module name="microservicecloud-provide-game-8002" target="1.8" />
+      <module name="microservicecloud-provide-game-8003" target="1.8" />
+      <module name="microservicecloud-provide-game-hystrix-8001" target="1.8" />
+      <module name="microservicecloud-zuul-gateway-9527" target="1.8" />
       <module name="provide-ticket" target="1.8" />
       <module name="SpringCloud" target="1.5" />
     </bytecodeTargetLevel>
