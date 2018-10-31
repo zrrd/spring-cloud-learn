@@ -24,8 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GameController {
 
+  private final DataSource dataSource;
+
   @Autowired
-  DataSource dataSource;
+  public GameController(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 
   /**
    * 查询所有游戏信息,返回游戏列表页面.

@@ -16,6 +16,7 @@ public class HelloController {
   @ResponseBody
   @RequestMapping("/hello")
   public String hello() {
+    System.out.println("8002");
     return "hello world";
   }
 

@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: ZUUL-GATEWAY
-# Discovery Server Access
+# 服务网关也要注册为一个微服务
 eureka:
   client:
     service-url:
@@ -27,6 +27,11 @@ info:
     java.source: 1.8
     java.traget: 1.8
     version: $project.version$
+
+#如果下面的啥都配置的话  访问 provide-game 只能通过http://localhost:9527/provide-game/**
+#而不能通过直接请求 http://localhost:8001/** 相当于接收全部的请求并且转发 并可以在这部添加权限校验
+#增加了服务的安全性
+
 #自定义服务映射规则
 zuul:
   routes:

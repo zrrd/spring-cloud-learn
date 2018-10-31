@@ -3,25 +3,17 @@ package cn.learn.microservicecloud;
 import cn.learn.igame.IgameApplication;
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.context.annotation.Bean;
 
 /**
- * .
+ * <p>SpringCloudApplication 注解相当于 SpringBootApplication</p>.
+ * <p>EnableDiscoveryClient EnableCircuitBreaker 三个注解</p>
+ *
  * @author shaoyijiong
  */
-//服务注册 将本微服务注册到Eureka server中去
-
-@EnableEurekaClient
-//服务发现
-@EnableDiscoveryClient
-@SpringBootApplication
-//开启熔断器
-@EnableCircuitBreaker
+@SpringCloudApplication
 public class ProvideGameHystrix8001Application {
 
   /**
@@ -30,7 +22,8 @@ public class ProvideGameHystrix8001Application {
   @Bean
   public ServletRegistrationBean getServlet() {
     HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-    ServletRegistrationBean<HystrixMetricsStreamServlet> registrationBean = new ServletRegistrationBean<>(streamServlet);
+    ServletRegistrationBean<HystrixMetricsStreamServlet> registrationBean = new ServletRegistrationBean<>(
+        streamServlet);
     registrationBean.setLoadOnStartup(1);
     registrationBean.addUrlMappings("/hystrix.stream");
     registrationBean.setName("HystrixMetricsStreamServlet");

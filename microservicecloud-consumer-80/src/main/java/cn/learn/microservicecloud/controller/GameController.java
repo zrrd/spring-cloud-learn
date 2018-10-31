@@ -22,6 +22,11 @@ public class GameController {
 
   /**
    * 通过eureka服务名调用.
+   * <p>
+   * 为什么能通过这样调用呢  SpringCloudRibbon有一个拦截器
+   * 进行实际调用的时候，自动的去选取服务实例，并将实际要请求的IP地址和端口替换这里的服务名，
+   * 从而完成服务接口的调用
+   * </p>
    */
   //private static final String REST_URL_PREFIX = "http://localhost:8001";
   private static final String REST_URL_PREFIX = "http://PROVIDE-GAME";

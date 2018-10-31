@@ -13,3 +13,9 @@ spring:
       uri: http://client-config.com:3344 #从哪里读取配置文件
       #profile: dev #访问哪个配置文件   也可以在启动时指定  active profile dev
       label: master
+
+      #如果注册中心注册为服务  为了高可用  不只一个注册中心的时候  通过这种方式找到配置中心
+      # 就是 url -> discovery 替换了而已
+      #discovery:
+        #enabled: true
+        #service-id: microservicecloud-config
