@@ -1,0 +1,12 @@
+server:
+  port: 3344
+
+#从哪里读取配置文件
+spring:
+  application:
+    name: microservicecloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zrrd/SpringCloudConfig.git

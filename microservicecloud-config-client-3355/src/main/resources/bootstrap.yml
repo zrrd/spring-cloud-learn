@@ -1,0 +1,15 @@
+#优先级比application.yml高   负责读取配置中心的配置
+
+ # spring.application.name：对应配置文件规则中的{application}部分
+ # spring.cloud.config.profile：对应配置文件规则中的{profile}部分
+ # spring.cloud.config.label：对应配置文件规则中的{label}部分
+ # spring.cloud.config.uri：配置中心config-server的地址
+
+#配置中心的配置  会覆盖本配置类
+spring:
+  cloud:
+    config:
+      name: spring-cloud-client #需要读取的配置文件名
+      uri: http://client-config.com:3344 #从哪里读取配置文件
+      profile: dev #访问哪个配置文件
+      label: master
