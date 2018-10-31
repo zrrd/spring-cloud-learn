@@ -11,5 +11,5 @@ spring:
     config:
       name: spring-cloud-client #需要读取的配置文件名
       uri: http://client-config.com:3344 #从哪里读取配置文件
-      profile: dev #访问哪个配置文件
+      #profile: dev #访问哪个配置文件   也可以在启动时指定  active profile dev
       label: master
