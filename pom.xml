@@ -22,6 +22,8 @@
     <module>microservicecloud-eureka-7002</module>
     <module>microservicecloud-eureka-7003</module>
     <module>microservicecloud-zuul-gateway-9527</module>
+    <module>spring-boot-admin-client</module>
+    <module>spring-boot-admin-server</module>
   </modules>
 
   <build>

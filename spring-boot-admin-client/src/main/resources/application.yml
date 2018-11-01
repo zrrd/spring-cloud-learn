@@ -1,0 +1,25 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: admin-client
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    #eureka\u663E\u793Aip
+    prefer-ip-address: true
+    #eureka status\u7684\u663E\u793A\u7684\u540D\u5B57
+    instance-id: admin-client
+
+
+#\u66B4\u9732\u6240\u6709\u7AEF\u70B9
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
