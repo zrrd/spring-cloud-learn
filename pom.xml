@@ -18,6 +18,8 @@
     <module>microservicecloud-provide-game-hystrix-8001</module>
     <module>microservicecloud-hystrix-dashboard</module>
     <module>microservicecloud-consumer-80</module>
+    <module>microservicecloud-consumer-feign</module>
+    <module>microservicecloud-consumer-hystrix</module>
     <module>microservicecloud-eureka-7001</module>
     <module>microservicecloud-eureka-7002</module>
     <module>microservicecloud-eureka-7003</module>

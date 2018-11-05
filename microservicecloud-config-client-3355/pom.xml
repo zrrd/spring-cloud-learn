@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.learn</groupId>
-  <artifactId>microservicecloud-config-client-3344</artifactId>
+  <artifactId>microservicecloud-config-client-3355</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>microservicecloud-config-client-3344</name>
+  <name>microservicecloud-config-client-3355</name>
   <description>Demo project for Spring Boot</description>
 
   <parent>
