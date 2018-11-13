@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * game接口调用. 通过FeignClient来判断掉用哪个服务的接口
+ * game接口调用. 通过FeignClient来判断掉用哪个服务的接口 声明式调用
  *
  * @author 邵益炯
  * @date 2018/10/31
