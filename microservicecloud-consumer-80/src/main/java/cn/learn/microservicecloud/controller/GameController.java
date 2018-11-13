@@ -29,7 +29,7 @@ public class GameController {
    * </p>
    */
   //private static final String REST_URL_PREFIX = "http://localhost:8001";
-  private static final String REST_URL_PREFIX = "http://PROVIDE-GAME";
+  private static final String REST_URL_PREFIX = "http://provide-game";
 
   private final RestTemplate restTemplate;
 

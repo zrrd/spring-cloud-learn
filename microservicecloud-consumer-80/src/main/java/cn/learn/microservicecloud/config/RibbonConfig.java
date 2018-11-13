@@ -1,7 +1,7 @@
 package cn.learn.microservicecloud.config;
 
 import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,9 +27,8 @@ public class RibbonConfig {
     // RetryRule 先按照RoundRobinRule 获取服务 失败了再重试几次
     // ZoneAvoidanceRule 复合判断server所在区域的性能和server的可用性选择server
     // BestAvailableRule 并发最小的请求
-
-    // 随机
-    return new RandomRule();
+    // 随机 RandomRule
+    return new RoundRobinRule();
   }
 
 }

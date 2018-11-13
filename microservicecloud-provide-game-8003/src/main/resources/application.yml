@@ -2,7 +2,7 @@ server:
   port: 8003
 spring:
   application:
-    name: PROVIDE-GAME
+    name: provide-game
 # Discovery Server Access
 eureka:
   client:
@@ -13,7 +13,7 @@ eureka:
     #eureka显示ip
     prefer-ip-address: true
     #eureka status的显示的名字
-    #instance-id: provide-game-8003
+    instance-id: provide-game-8003
 
 #项目监控配置  具体看印象笔记  自定义info config
 management:

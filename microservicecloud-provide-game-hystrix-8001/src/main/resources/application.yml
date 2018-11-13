@@ -3,7 +3,7 @@ server:
 spring:
   application:
     #这个3个微服务提供者不能不同
-    name: PROVIDE-GAME
+    name: provide-game
 # Discovery Server Access
 eureka:
   client:

@@ -14,6 +14,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * @author syj
  */
 //@RibbonClient(configuration = MySelfRule.class,name = "syj_ribbon")
+@RibbonClient("a")
 @EnableEurekaClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class Consumer80Application {

@@ -61,6 +61,11 @@
       <artifactId>igame</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <!--spring重试的框架-->
+    <dependency>
+      <groupId>org.springframework.retry</groupId>
+      <artifactId>spring-retry</artifactId>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
