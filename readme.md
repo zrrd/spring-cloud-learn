@@ -1,3 +1,5 @@
+SpringCloud
+---
 1. igame      用来当做通用属性包(其他包导入这个包的话需要exclude = DataSourceAutoConfiguration.class)
               来排除mysql的自动配置
 2. provide    服务提供者
@@ -8,3 +10,4 @@
 7. hystrix dashboard   可视化服务监控
 8. zuul       服务网关  用于过滤与路由
 9. feign      通过feign进一步封装微服务直接的调用关系 
+10. admin     动态监控SpringBoot服务
