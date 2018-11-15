@@ -2,7 +2,7 @@ server:
   port: 9527
 spring:
   application:
-    name: ZUUL-GATEWAY
+    name: zuul-gateway
 # 服务网关也要注册为一个微服务
 eureka:
   client:
@@ -35,11 +35,46 @@ info:
 #自定义服务映射规则
 zuul:
   routes:
+    #不对的 !!! 不需要eureka  手动路由
+    #user-service:   #这里是路由id随意写
+      #path: /test/**        #映射路径
+      #utl: http://127.0.0.1:8001    #映射路径对应的url地址
+    user-service:   #这里是路由id随意写
+      path: /test/**        #映射路径
+      serviceId: provide-game    #映射路径对应的url地址
+
+    #也可以这样写  简化
     #服务名          映射地址  http://localhost:9527/test/game/1
-    PROVIDE-GAME:  /test/**
+    provide-game:  /test/**
+
+    #默认的规则是
+    #provide-game:  /provide-game/**
+
+
   #忽略原来真实名字    这样就访问不了了 http://localhost:9527/provide-game/game/1
-  ignored-services: "*"
+  #ignored-services: "*"
   #统一前缀
-  prefix: /syj
+  #prefix: /syj
+
+  #错误重试  默认为false
+  retryable: true
+
+#熔断   在zuul中最好在后置拦截器里定义超时处理 返回一个页面  用户友好
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #将超时时间设置为5s 原本为 1s
+
+#负载均衡重试
+ribbon:
+  ConnectTimeout: 250 #Ribbon的连续超时时间 单位是毫秒
+  ReadTimeout: 1000 #Ribbon的数据读取超时时间
+  OkToRetryOnAllOperations: true # 是否对所有请求都进行重试
+  MaxAutoRetriesNextServer: 2   #重试切换实例次数 不要太大防止响应太慢
+  MaxAutoRetries: 1     #对当前实例的重试次数
+
 
 

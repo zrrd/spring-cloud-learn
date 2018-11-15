@@ -16,7 +16,8 @@ spring:
     loadbalancer:
       retry:
         enabled: true #开启负载均衡重试 防止某个服务挂了以后放回错误响应到前台
-#服务名
+
+#服务名  如果想配置全局的ribbon负载均衡  只要把服务名去掉就好了
 provide-game:
   ribbon:
     ConnectTimeout: 250 #Ribbon的连续超时时间 单位是毫秒
