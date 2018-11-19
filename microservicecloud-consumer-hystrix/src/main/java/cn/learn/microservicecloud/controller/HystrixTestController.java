@@ -29,6 +29,9 @@ public class HystrixTestController {
     return restTemplate.getForObject("http://provide-game/hello", String.class);
   }
 
+  /**
+   * fallback中的方法参数与返回类型要与原方法一致.
+   */
   @SuppressWarnings("unused")
   public String fallback() {
     return "fallback";
