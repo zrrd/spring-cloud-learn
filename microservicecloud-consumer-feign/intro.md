@@ -1,0 +1,1 @@
+feign的底层已经集成了ribbon负载均衡,hystrix服务熔断

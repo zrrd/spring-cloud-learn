@@ -7,3 +7,21 @@ eureka:
       #defaultZone: http://localhost:7001/eureka/
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
     register-with-eureka: false
+    registry-fetch-interval-seconds: 30 #每隔30s拉去服务器列表 默认为30s
+
+
+
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true #开启负载均衡重试 防止某个服务挂了以后放回错误响应到前台
+
+#服务名  如果想配置全局的ribbon负载均衡  只要把服务名去掉就好了
+provide-game:
+  ribbon:
+    ConnectTimeout: 250 #Ribbon的连续超时时间 单位是毫秒
+    ReadTimeout: 1000 #Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有请求都进行重试
+    MaxAutoRetriesNextServer: 2   #重试切换实例次数 不要太大防止响应太慢
+    MaxAutoRetries: 1     #对当前实例的重试次数

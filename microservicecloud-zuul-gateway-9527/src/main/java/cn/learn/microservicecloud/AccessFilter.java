@@ -2,17 +2,18 @@ package cn.learn.microservicecloud;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.stereotype.Component;
 
 /**
- * 自定义过滤器.
+ * 自定义过滤器,实现登录校验.
  *
  * @author 邵益炯
  * @date 2018/10/31
  */
+@Component
 @Slf4j
 public class AccessFilter extends ZuulFilter {
 
@@ -21,11 +22,14 @@ public class AccessFilter extends ZuulFilter {
    */
   @Override
   public String filterType() {
+    // FilterConstants.ROUTE_TYPE; 路由请求时
+    // FilterConstants.ERROR_TYPE; 发生错误时
+    // FilterConstants.POST_TYPE;  在route与error后调用
     return FilterConstants.PRE_TYPE;
   }
 
   /**
-   * 过滤器的执行顺序。当请求在一个阶段中存在多个过滤器时，需要根据该方法返回的值来依次执行.
+   * 过滤器的执行顺序。当请求在一个阶段中存在多个过滤器时，需要根据该方法返回的值来依次执行. 数字越小优先级越高
    */
   @Override
   public int filterOrder() {
@@ -42,21 +46,23 @@ public class AccessFilter extends ZuulFilter {
   }
 
   /**
-   * 过滤器的具体逻辑。这里我们通过ctx.setSendZuulResponse(false)令zuul过滤该请求， 不对其进行路由，
-   * 然后通过ctx.setResponseStatusCode(401)设置了其返回的错误码，
-   * 当然我们也可以进一步优化我们的返回，比如，通过ctx.setResponseBody(body)对返回body内容进行编辑等。
+   * <p>过滤器的具体逻辑。这里我们通过ctx.setSendZuulResponse(false)令zuul过滤该请求， 不对其进行路由，</p>
+   * <p>然后通过ctx.setResponseStatusCode(401)设置了其返回的错误码，</p>
+   * <p>当然我们也可以进一步优化我们的返回，比如，通过ctx.setResponseBody(body)对返回body内容进行编辑等。</p>
    */
   @Override
-  public Object run() throws ZuulException {
+  public Object run() {
+    //请求上下文  主要包含 request response header
     RequestContext ctx = RequestContext.getCurrentContext();
     HttpServletRequest request = ctx.getRequest();
 
     Object accessToken = request.getParameter("accessToken");
     if (accessToken == null) {
       log.warn("access token is empty");
+      //拦截
       ctx.setSendZuulResponse(false);
+      //设置响应状态码
       ctx.setResponseStatusCode(401);
-      return null;
     }
     log.info("access token ok");
     return null;

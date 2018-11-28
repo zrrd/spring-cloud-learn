@@ -26,9 +26,13 @@ public class HystrixTestController {
   @HystrixCommand(fallbackMethod = "fallback")
   public String hello() {
     //启动 8001 与 8002  其中8001 端口的服务 存在问题
-    return restTemplate.getForObject("http://PROVIDE-GAME/hello", String.class);
+    return restTemplate.getForObject("http://provide-game/hello", String.class);
   }
 
+  /**
+   * fallback中的方法参数与返回类型要与原方法一致.
+   */
+  @SuppressWarnings("unused")
   public String fallback() {
     return "fallback";
   }

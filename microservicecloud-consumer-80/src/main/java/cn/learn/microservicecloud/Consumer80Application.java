@@ -13,7 +13,8 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * 自定义的负载均衡算法
  * @author syj
  */
-@RibbonClient(configuration = MySelfRule.class,name = "syj_ribbon")
+//@RibbonClient(configuration = MySelfRule.class,name = "syj_ribbon")
+@RibbonClient("a")
 @EnableEurekaClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class Consumer80Application {

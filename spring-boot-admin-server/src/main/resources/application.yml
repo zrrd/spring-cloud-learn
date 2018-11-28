@@ -1,17 +1,13 @@
 server:
   port: 9001
-
 spring:
   application:
     name: admin-server
-
 eureka:
   client:
     service-url:
       #defaultZone: http://localhost:7001/eureka/
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
-    #eureka\u663E\u793Aip
     prefer-ip-address: true
-    #eureka status\u7684\u663E\u793A\u7684\u540D\u5B57
     instance-id: admin-server

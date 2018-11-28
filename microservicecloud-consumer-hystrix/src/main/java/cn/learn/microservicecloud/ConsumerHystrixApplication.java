@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * @author syj
  */
 @EnableCircuitBreaker
-@RibbonClient(value = "a")
+@RibbonClient("a")
 @EnableEurekaClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class ConsumerHystrixApplication {

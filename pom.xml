@@ -15,7 +15,6 @@
     <module>microservicecloud-provide-game-8001</module>
     <module>microservicecloud-provide-game-8002</module>
     <module>microservicecloud-provide-game-8003</module>
-    <module>microservicecloud-provide-game-hystrix-8001</module>
     <module>microservicecloud-hystrix-dashboard</module>
     <module>microservicecloud-consumer-80</module>
     <module>microservicecloud-consumer-feign</module>

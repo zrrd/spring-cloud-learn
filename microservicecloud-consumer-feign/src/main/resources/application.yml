@@ -7,3 +7,7 @@ eureka:
       #defaultZone: http://localhost:7001/eureka/
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
     register-with-eureka: false
+
+feign:
+  hystrix:
+    enabled: true #feign默认关闭熔断 需要手动将其开启
