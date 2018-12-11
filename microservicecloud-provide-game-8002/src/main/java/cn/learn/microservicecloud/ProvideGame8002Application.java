@@ -1,8 +1,8 @@
 package cn.learn.microservicecloud;
 
-import cn.learn.igame.IgameApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
@@ -14,13 +14,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 //服务发现
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class,
+    scanBasePackages = "cn.learn.igame")
 public class ProvideGame8002Application {
 
   public static void main(String[] args) {
-    Class[] classes = new Class[2];
-    classes[0] = ProvideGame8002Application.class;
-    classes[1] = IgameApplication.class;
-    SpringApplication.run(classes, args);
+    SpringApplication.run(ProvideGame8002Application.class, args);
   }
 }
