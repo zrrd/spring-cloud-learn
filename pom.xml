@@ -25,6 +25,7 @@
     <module>microservicecloud-zuul-gateway-9527</module>
     <module>spring-boot-admin-client</module>
     <module>spring-boot-admin-server</module>
+      <module>microservicecloud-consumer-feign</module>
   </modules>
 
   <build>
