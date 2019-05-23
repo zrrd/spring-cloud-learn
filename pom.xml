@@ -71,6 +71,7 @@
     <module>microservicecloud-consumer-feign</module>
     <module>igame</module>
     <module>spring-cloud-alibaba-consumer</module>
+    <module>spring-cloud-alibaba-provider</module>
   </modules>
 
   <build>
