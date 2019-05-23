@@ -64,6 +64,8 @@ spring:
         #
         - id: add_request_parameter_route
           uri: http://example.org
+          predicates:
+            Path=/test
           filters:
             - AddRequestParameter=foo, bar
 
@@ -73,8 +75,12 @@ spring:
           #这里其实默认使用了全局过滤器 LoadBalancerClient ，当路由配置中 uri 所用的协议为 lb 时（以 uri: lb://spring-cloud-producer 为例），
           #gateway 将使用 LoadBalancerClient 把 spring-cloud-producer 通过 eureka 解析为实际的主机和端口，并进行负载均衡。
           uri: lb://spring-cloud-producer
+          #还有增加请求头 等很多过滤器
+          predicates:
+            Path=/test
           filters:
             - AddRequestParameter=foo, bar
+
 
         #高级使用
 
@@ -82,17 +88,19 @@ spring:
          #StripPrefix=2就代表截取路径的个数，
          #这样配置后当请求/name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo。
         - id: nameRoot
-            uri: http://nameservice
-            predicates:
-              - Path=/name/**
-            filters:
-              - StripPrefix=2
+          uri: http://nameservice
+          predicates:
+            - Path=/name/**
+          filters:
+            - StripPrefix=2
 
         #增加前缀
         - id: prefixpath_route
-            uri: http://example.org
-            filters:
-              - PrefixPath=/mypath
+          uri: http://example.org
+          predicates:
+            Path=/test
+          filters:
+            - PrefixPath=/mypath
 
         #限速路由器
         #熔断路由器
@@ -101,4 +109,4 @@ spring:
 #将log街边提高到debug 方便排查问题
 logging:
   level:
-    org.springframework.cloud.gateway: debug
+    org.springframework.cloud.gateway: info
