@@ -72,6 +72,7 @@
     <module>igame</module>
     <module>spring-cloud-alibaba-consumer</module>
     <module>spring-cloud-alibaba-provider</module>
+    <module>spring-cloud-gateway</module>
   </modules>
 
   <build>
