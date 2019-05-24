@@ -86,6 +86,7 @@
     <module>spring-cloud-alibaba-consumer</module>
     <module>spring-cloud-alibaba-provider</module>
     <module>spring-cloud-gateway</module>
+    <module>spring-cloud-alibaba-sentinel</module>
   </modules>
 
   <build>

@@ -9,8 +9,10 @@ import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayFlowRule;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayParamFlowItem;
 import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
+import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +24,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 
 /**
@@ -45,6 +50,8 @@ public class GatewayConfiguration {
   @Order(Ordered.HIGHEST_PRECEDENCE)
   public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
     // Register the block exception handler for Spring Cloud Gateway.
+    GatewayCallbackManager.setBlockHandler((serverWebExchange, throwable) -> ServerResponse.status(
+        HttpStatus.OK).body(BodyInserters.fromObject(ImmutableMap.of("code",601,"message","服务器忙"))));
     return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
   }
 
