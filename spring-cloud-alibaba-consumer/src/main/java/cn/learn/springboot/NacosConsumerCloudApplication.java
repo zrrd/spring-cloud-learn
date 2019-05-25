@@ -48,6 +48,7 @@ public class NacosConsumerCloudApplication {
 
     @GetMapping("discovery")
     public String discovery() {
+      System.out.println("go");
       //service-provider 服务名
       return restTemplate.getForObject("http://service-provider/go", String.class);
     }

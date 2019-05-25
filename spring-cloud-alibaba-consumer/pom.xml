@@ -38,6 +38,12 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-transport-simple-http</artifactId>
+      <version>1.6.0</version>
+    </dependency>
   </dependencies>
 
 </project>

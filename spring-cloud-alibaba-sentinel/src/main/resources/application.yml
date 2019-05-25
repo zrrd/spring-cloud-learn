@@ -3,3 +3,7 @@ server:
 spring:
   application:
     name: sentinel-learn
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 47.99.73.15:8080
