@@ -1,7 +1,5 @@
 #不能写在application.yml 否则无法读取配置
 spring:
-  application:
-    name: web-gateway
   cloud:
     nacos:
       config:

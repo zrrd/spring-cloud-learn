@@ -39,6 +39,13 @@
       <optional>true</optional>
     </dependency>
 
+    <!--这个只适用于servlet 容器中-->
+<!--
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+-->
 
     <!--熔断-->
 <!--    <dependency>

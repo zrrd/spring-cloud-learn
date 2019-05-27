@@ -1,6 +1,7 @@
 package cn.learn.springboot.springboot.annotation;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import java.util.concurrent.TimeUnit;
 import org.springframework.stereotype.Service;
 
 /**
@@ -83,5 +84,19 @@ public class TestServiceImpl implements TestService {
   public String defaultFallback() {
     System.out.println("Go to default fallback");
     return "default_fallback";
+  }
+
+  /**
+   * 这里 entryType 得是入站流量
+   */
+  @Override
+  @SentinelResource(value = "timeout")
+  public String timeoutGo() {
+    try {
+      TimeUnit.SECONDS.sleep(2);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return String.valueOf(System.currentTimeMillis());
   }
 }

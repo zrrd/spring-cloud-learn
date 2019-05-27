@@ -1,5 +1,6 @@
 package cn.learn.springboot;
 
+import java.util.concurrent.TimeUnit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -51,6 +52,13 @@ public class NacosConsumerCloudApplication {
       System.out.println("go");
       //service-provider 服务名
       return restTemplate.getForObject("http://service-provider/go", String.class);
+    }
+
+    @GetMapping("timeout")
+    public String timeout() throws InterruptedException {
+      //休息10s 模拟超时
+      TimeUnit.SECONDS.sleep(10);
+      return String.valueOf(System.currentTimeMillis());
     }
   }
 }

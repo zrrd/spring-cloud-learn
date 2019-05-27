@@ -6,4 +6,4 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: 47.99.73.15:8080
+        dashboard: 127.0.0.1:8080

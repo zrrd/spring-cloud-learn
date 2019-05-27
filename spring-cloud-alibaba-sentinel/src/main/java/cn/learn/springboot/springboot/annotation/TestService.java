@@ -11,4 +11,6 @@ public interface TestService {
   String hello(long s);
 
   String helloAnother(String name);
+
+  String timeoutGo();
 }

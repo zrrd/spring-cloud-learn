@@ -13,29 +13,22 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.10</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>com.alibaba.csp</groupId>
       <artifactId>sentinel-core</artifactId>
       <version>1.6.0</version>
     </dependency>
+
     <dependency>
       <groupId>com.alibaba.csp</groupId>
       <artifactId>sentinel-annotation-aspectj</artifactId>
       <version>1.6.0</version>
     </dependency>
-
-    <!--热点限流-->
-    <dependency>
-      <groupId>com.alibaba.csp</groupId>
-      <artifactId>sentinel-parameter-flow-control</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.alibaba.csp</groupId>
-      <artifactId>sentinel-transport-simple-http</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -45,6 +38,11 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-transport-simple-http</artifactId>
+      <version>1.6.0</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

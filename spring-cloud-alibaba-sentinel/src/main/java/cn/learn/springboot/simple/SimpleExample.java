@@ -50,7 +50,7 @@ public class SimpleExample {
    * resource         资源名，资源名是限流规则的作用对象
    * count            限流阈值
    * grade            限流阈值类型，QPS 或线程数模式                                         QPS 模式
-   * limitApp         流控针对的调用来源                                                    default，代表不区分调用来源
+   * limitApp         流控针对的调用来源 (例如同一个service 被两个controller调用)              default，代表不区分调用来源
    * strategy         判断的根据是资源自身，还是根据其它关联资源 (refResource)，还是根据链路入口  根据资源本身
    * controlBehavior 流控效果（直接拒绝 / 排队等待 / 慢启动模式）                              直接拒绝
    * https://github.com/alibaba/Sentinel/wiki/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6 具体控制

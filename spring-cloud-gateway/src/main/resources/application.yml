@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+  application:
+    name: gateway-learn
   cloud:
     gateway:
       #是否与服务注册发现组件进行结合 开启后 自动代理注册中心的服务http://网关地址：端口/服务中心注册 serviceId/具体的url
