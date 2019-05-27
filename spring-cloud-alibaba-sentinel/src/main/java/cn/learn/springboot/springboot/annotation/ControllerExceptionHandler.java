@@ -24,7 +24,7 @@ public class ControllerExceptionHandler {
   @ResponseBody
   public String exceptionHandler(Throwable throwable) {
     log.info(throwable.getClass().getName());
-    if (throwable.getCause() instanceof BlockException) {
+    if (BlockException.isBlockException(throwable)) {
       return "服务器忙";
     }
     return "网络异常";

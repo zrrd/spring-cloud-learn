@@ -49,7 +49,7 @@ public class AopConfiguration {
   /**
    * 降级规则
    */
-  private  void initDegradeRule() {
+  private void initDegradeRule() {
     List<DegradeRule> rules = new ArrayList<>();
     DegradeRule rule = new DegradeRule();
     rule.setResource("timeout");
