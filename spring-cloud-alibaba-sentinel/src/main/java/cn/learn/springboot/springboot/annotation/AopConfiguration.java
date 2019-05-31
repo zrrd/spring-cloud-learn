@@ -1,6 +1,5 @@
 package cn.learn.springboot.springboot.annotation;
 
-import cn.learn.springboot.springboot.annotation.handler.CustomRequestOriginParser;
 import cn.learn.springboot.springboot.annotation.handler.CustomUrlBlockHandler;
 import cn.learn.springboot.springboot.annotation.handler.CustomUrlCleaner;
 import com.alibaba.csp.sentinel.adapter.servlet.CommonFilter;
