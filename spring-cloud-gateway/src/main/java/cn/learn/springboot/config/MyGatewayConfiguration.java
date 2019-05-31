@@ -11,7 +11,6 @@ import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
-import com.alibaba.csp.sentinel.init.InitFunc;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
@@ -54,7 +53,8 @@ public class MyGatewayConfiguration {
   public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
     // Register the block exception handler for Spring Cloud Gateway.
     GatewayCallbackManager.setBlockHandler((serverWebExchange, throwable) -> ServerResponse.status(
-        HttpStatus.OK).body(BodyInserters.fromObject(ImmutableMap.of("code",601,"message","服务器忙"))));
+        HttpStatus.OK)
+        .body(BodyInserters.fromObject(ImmutableMap.of("code", 601, "message", "服务器忙"))));
     return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
   }
 

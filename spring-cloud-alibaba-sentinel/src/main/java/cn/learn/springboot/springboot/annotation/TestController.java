@@ -37,4 +37,9 @@ public class TestController {
   public String timeout() {
     return service.timeoutGo();
   }
+
+  @GetMapping("/a")
+  public String a() {
+    return "a";
+  }
 }

@@ -1,5 +1,10 @@
 package cn.learn.springboot.springboot.annotation;
 
+import cn.learn.springboot.springboot.annotation.handler.CustomRequestOriginParser;
+import cn.learn.springboot.springboot.annotation.handler.CustomUrlBlockHandler;
+import cn.learn.springboot.springboot.annotation.handler.CustomUrlCleaner;
+import com.alibaba.csp.sentinel.adapter.servlet.CommonFilter;
+import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
 import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
@@ -9,6 +14,8 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.servlet.Filter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
  * @author shaoyijiong
  * @date 2019/5/24
  */
+@SuppressWarnings("all")
 @Configuration
 public class AopConfiguration {
 
@@ -29,11 +37,13 @@ public class AopConfiguration {
   private void init() {
     initFlowRules();
     initDegradeRule();
+    initFlowRulesURl();
+    initWebCallbackManager();
   }
 
 
   /**
-   * 限流规则
+   * 根据方法进行限流 限流规则
    */
   private void initFlowRules() {
     List<FlowRule> rules = new ArrayList<>();
@@ -47,7 +57,7 @@ public class AopConfiguration {
   }
 
   /**
-   * 降级规则
+   * 根据方法进行限流 降级规则
    */
   private void initDegradeRule() {
     List<DegradeRule> rules = new ArrayList<>();
@@ -61,4 +71,48 @@ public class AopConfiguration {
     rules.add(rule);
     DegradeRuleManager.loadRules(rules);
   }
+
+
+  /**
+   * 根据路径进行限流
+   */
+  private void initFlowRulesURl() {
+    List<FlowRule> rules = new ArrayList<>();
+    FlowRule rule = new FlowRule();
+    rule.setResource("/a");
+    rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+    // Set limit QPS to 20.
+    rule.setCount(1);
+    //比如对ip生效
+    //rule.setLimitApp("192.168.9.218");
+    rules.add(rule);
+    FlowRuleManager.loadRules(rules);
+  }
+
+  private void initWebCallbackManager() {
+    WebCallbackManager.setUrlBlockHandler(new CustomUrlBlockHandler());
+    //WebCallbackManager.setRequestOriginParser(new CustomRequestOriginParser());
+    WebCallbackManager.setUrlCleaner(new CustomUrlCleaner());
+  }
+
+  /**
+   * <pre>
+   * Sentinel starter 默认为所有的 HTTP 服务提供了限流埋点，如果只想对 HTTP 服务进行限流，那么只需要引入依赖，无需修改代码。
+   * 不需要下面的这个
+   * 对特定的方法进行限流或者降级 @SentinelResource 注解来完成限流的埋点
+   * 可以实现接口 将/a/1 映射到 /a/* UrlCleaner
+   * </pre>
+   */
+  //@Bean
+  public FilterRegistrationBean sentinelFilterRegistration() {
+    //自定义http 接口限流
+    FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
+    registration.setFilter(new CommonFilter());
+    registration.addUrlPatterns("/*");
+    registration.setName("sentinelFilter");
+    registration.setOrder(1);
+
+    return registration;
+  }
+
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ControllerExceptionHandler {
 
   /**
-   * 全局异常处理
+   * 全局异常处理 不能捕捉接口限流
    */
   @ExceptionHandler
   @ResponseStatus(HttpStatus.OK)
