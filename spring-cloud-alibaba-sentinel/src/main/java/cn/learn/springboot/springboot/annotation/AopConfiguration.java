@@ -11,7 +11,11 @@ import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowItem;
+import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRuleManager;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.Filter;
@@ -35,10 +39,11 @@ public class AopConfiguration {
 
   @PostConstruct
   private void init() {
-    initFlowRules();
-    initDegradeRule();
-    initFlowRulesURl();
-    initWebCallbackManager();
+    //initFlowRules();
+    //initDegradeRule();
+    //initFlowRulesURl();
+    //initWebCallbackManager();
+    initParamFlowRules();
   }
 
 
@@ -79,7 +84,7 @@ public class AopConfiguration {
   private void initFlowRulesURl() {
     List<FlowRule> rules = new ArrayList<>();
     FlowRule rule = new FlowRule();
-    rule.setResource("/a");
+    rule.setResource("/test");
     rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
     // Set limit QPS to 20.
     rule.setCount(1);
@@ -87,6 +92,19 @@ public class AopConfiguration {
     //rule.setLimitApp("192.168.9.218");
     rules.add(rule);
     FlowRuleManager.loadRules(rules);
+  }
+
+  private static void initParamFlowRules() {
+    ParamFlowRule rule = new ParamFlowRule("param")
+        .setParamIdx(0)
+        .setCount(1);
+    // 针对 int 类型的参数 PARAM_B，单独设置限流 QPS 阈值为 100，而不是全局的阈值 1.
+    ParamFlowItem item = new ParamFlowItem().setObject(String.valueOf(2))
+        .setClassType(int.class.getName()).setClassType(int.class.getName())
+        .setCount(10);
+    rule.setParamFlowItemList(Collections.singletonList(item));
+
+    ParamFlowRuleManager.loadRules(Collections.singletonList(rule));
   }
 
   private void initWebCallbackManager() {

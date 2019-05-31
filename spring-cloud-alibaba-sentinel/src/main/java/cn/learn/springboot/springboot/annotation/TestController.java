@@ -1,5 +1,9 @@
 package cn.learn.springboot.springboot.annotation;
 
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,5 +45,24 @@ public class TestController {
   @GetMapping("/a")
   public String a() {
     return "a";
+  }
+
+
+  @GetMapping("/param")
+  public String paramLimit(int uid) {
+    Entry entry = null;
+    String retVal;
+    try {
+      // 只对参数uid进行限流，参数ip不进行限制
+      entry = SphU.entry("param", EntryType.IN, 1, uid);
+      retVal = "passed";
+    } catch (BlockException e) {
+      retVal = "blocked";
+    } finally {
+      if (entry != null) {
+        entry.exit();
+      }
+    }
+    return retVal;
   }
 }
