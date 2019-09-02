@@ -32,6 +32,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 
 /**
+ * Sentinel 阿里限流工具
+ *
  * @author shaoyijiong
  * @date 2019/5/23
  */
@@ -47,6 +49,9 @@ public class MyGatewayConfiguration {
     this.serverCodecConfigurer = serverCodecConfigurer;
   }
 
+  /**
+   * 发生异常后的处理方式
+   */
   @Primary
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -65,6 +70,9 @@ public class MyGatewayConfiguration {
     return new SentinelGatewayFilter();
   }
 
+  /**
+   * 初始化规则
+   */
   @PostConstruct
   public void doInit() {
     //自定义api限流规则
