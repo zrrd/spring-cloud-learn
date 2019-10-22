@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -22,6 +23,7 @@ import org.springframework.http.codec.HttpMessageReader;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.util.MimeType;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.server.HandlerStrategies;
@@ -61,12 +63,12 @@ public class GatewayContextFilter implements GlobalFilter, Ordered {
     MediaType contentType = headers.getContentType();
     long contentLength = headers.getContentLength();
     if (contentLength > 0) {
-      if (MediaType.APPLICATION_JSON.equals(contentType) || MediaType.APPLICATION_JSON_UTF8
-          .equals(contentType)) {
+      if (MediaType.APPLICATION_JSON.isCompatibleWith(contentType) || MediaType.APPLICATION_JSON_UTF8
+          .isCompatibleWith(contentType)) {
         //获取json请求
         return readBody(exchange, chain, gatewayContext);
       }
-      if (MediaType.APPLICATION_FORM_URLENCODED.equals(contentType)) {
+      if (MediaType.APPLICATION_FORM_URLENCODED.isCompatibleWith(contentType)) {
         //获取表单请求
         return readFormData(exchange, chain, gatewayContext);
       }
@@ -200,3 +202,4 @@ public class GatewayContextFilter implements GlobalFilter, Ordered {
   }
 
 }
+

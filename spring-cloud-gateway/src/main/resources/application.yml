@@ -1,5 +1,13 @@
 server:
   port: 9000
+management:
+  gateway:
+    enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "*"
 spring:
   application:
     name: gateway-learn
