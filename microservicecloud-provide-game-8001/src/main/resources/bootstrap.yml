@@ -1,0 +1,16 @@
+#服务注册
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      env: product-environment
+      backup_env: develop-environment
+  client:
+    serviceUrl:
+      product-zone: http://dc-hadoop156:5555/eureka/
+      develop-zone: http://dc-hadoop156:5545/eureka/
+      release-zone: http://dc-hadoop156:5565/eureka/
+    availabilityZones:
+      product-environment: product-zone
+      develop-environment: develop-zone
+      release-environment: release-zone

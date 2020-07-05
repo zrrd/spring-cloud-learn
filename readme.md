@@ -11,3 +11,11 @@ SpringCloud
 8. zuul       服务网关  用于过滤与路由
 9. feign      通过feign进一步封装微服务直接的调用关系 
 10. admin     动态监控SpringBoot服务
+
+修改host
+# learn-springcloud
+> 127.0.0.1 eureka7001.com
+> 127.0.0.1 eureka7002.com
+> 127.0.0.1 eureka7003.com
+> 127.0.0.1 myzuul.com
+> 127.0.0.1 client-config.com

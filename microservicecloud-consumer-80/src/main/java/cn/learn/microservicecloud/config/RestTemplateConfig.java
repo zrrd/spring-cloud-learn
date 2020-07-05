@@ -18,10 +18,10 @@ public class RestTemplateConfig {
 
   private final RestTemplateBuilder restTemplateBuilder;
 
-  @Autowired
-  public RestTemplateConfig(RestTemplateBuilder restTemplateBuilder) {
-    this.restTemplateBuilder = restTemplateBuilder;
-  }
+    @Autowired
+    public RestTemplateConfig(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplateBuilder = restTemplateBuilder;
+    }
 
   /**
    * 通过LoadBalanced来进行负载均衡. 默认是通过轮询的方式

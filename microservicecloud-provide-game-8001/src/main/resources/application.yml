@@ -5,16 +5,16 @@ spring:
     #这个3个微服务提供者不能不同
     name: provide-game
 # Discovery Server Access
-eureka:
-  client:
-    service-url:
+#eureka:
+  #client:
+    #service-url:
       #defaultZone: http://localhost:7001/eureka/
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-  instance:
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  #instance:
     #eureka显示ip
-    prefer-ip-address: true
+    #prefer-ip-address: true
     #eureka status的显示的名字
-    instance-id: provide-game-8001
+    #instance-id: provide-game-8001
 
 #项目监控配置  具体看印象笔记  自定义info config
 management:

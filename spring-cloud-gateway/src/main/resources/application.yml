@@ -1,0 +1,122 @@
+server:
+  port: 9000
+management:
+  gateway:
+    enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+    name: gateway-learn
+  cloud:
+    gateway:
+      #是否与服务注册发现组件进行结合 开启后 自动代理注册中心的服务http://网关地址：端口/服务中心注册 serviceId/具体的url
+      #http://localhost:8080/service-consumer/discovery
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: neo_route
+          #转发到的地址
+          uri: http://localhost:8081
+          #路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将
+          predicates:
+            - Path=/discovery
+
+        #通过时间匹配 可以用在抢购的规则中
+        - id: time_route
+          uri: http://ityouknow.com
+          predicates:
+            #时间之后才转发 除了 after 还有before between
+            - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+        #通过cookie 匹配
+        - id: cookie_route
+          uri: http://ityouknow.com
+          predicates:
+            #cookie name 和 正则匹配
+            - Cookie=ityouknow, kee.e
+
+        #通过host匹配
+        #curl http://localhost:8080  -H "Host: www.ityouknow.com"
+        #curl http://localhost:8080  -H "Host: md.ityouknow.com"
+        - id: host_route
+          uri: http://ityouknow.com
+          predicates:
+            - Host=**.ityouknow.com
+
+        #通过请求方式匹配
+        - id: method_route
+          uri: http://ityouknow.com
+          predicates:
+            - Method=GET
+        #通过路径匹配
+        - id: host_route
+          uri: http://ityouknow.com
+          predicates:
+            - Path=/foo/{segment}
+
+        #通过请求参数匹配 只要请求汇总带有 smile 参数即会匹配路由，不带 smile 参数则不会匹配
+        - id: query_route
+          uri: http://ityouknow.com
+          predicates:
+            - Query=smile
+
+        #通过请求ip匹配
+        - id: remoteaddr_route
+          uri: http://ityouknow.com
+          predicates:
+            - RemoteAddr=192.168.1.1/24
+        #也可以用多条件组合
+        #AddRequestParameter GatewayFilter 可以在请求中添加指定参数。
+        #
+        - id: add_request_parameter_route
+          uri: http://example.org
+          predicates:
+            Path=/test
+          filters:
+            - AddRequestParameter=foo, bar
+
+
+        - id: lb_rute
+          #格式为：lb://应用注册服务名 负载均衡
+          #这里其实默认使用了全局过滤器 LoadBalancerClient ，当路由配置中 uri 所用的协议为 lb 时（以 uri: lb://spring-cloud-producer 为例），
+          #gateway 将使用 LoadBalancerClient 把 spring-cloud-producer 通过 eureka 解析为实际的主机和端口，并进行负载均衡。
+          uri: lb://spring-cloud-producer
+          #还有增加请求头 等很多过滤器
+          predicates:
+            Path=/test
+          filters:
+            - AddRequestParameter=foo, bar
+
+
+        #高级使用
+
+         #上面这个配置的例子表示，当请求路径匹配到/name/**会将包含name和后边的字符串接去掉转发，
+         #StripPrefix=2就代表截取路径的个数，
+         #这样配置后当请求/name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo。
+        - id: nameRoot
+          uri: http://nameservice
+          predicates:
+            - Path=/name/**
+          filters:
+            - StripPrefix=2
+
+        #增加前缀
+        - id: prefixpath_route
+          uri: http://example.org
+          predicates:
+            Path=/test
+          filters:
+            - PrefixPath=/mypath
+
+        #限速路由器
+        #熔断路由器
+        #重试路由器
+
+#将log街边提高到debug 方便排查问题
+logging:
+  level:
+    org.springframework.cloud.gateway: info

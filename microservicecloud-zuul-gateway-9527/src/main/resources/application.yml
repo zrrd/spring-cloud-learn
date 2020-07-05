@@ -58,6 +58,8 @@ zuul:
 
   #错误重试  默认为false
   retryable: true
+  # ignored-patterns: 希望忽略的路径
+  # ignored-services: 希望忽略的服务
 
 #熔断   在zuul中最好在后置拦截器里定义超时处理 返回一个页面  用户友好
 hystrix:
