@@ -18,7 +18,19 @@ public class TestController {
       throw new IllegalArgumentException();
     }
     if (hello.equals("slow")) {
-      Thread.sleep(3000);
+      Thread.sleep(1000000);
+    }
+    log.info("请求{}", hello);
+    return "go" + hello;
+  }
+
+  @GetMapping("go1")
+  public String go1(String hello) throws InterruptedException {
+    if (hello.equals("go")) {
+      throw new IllegalArgumentException();
+    }
+    if (hello.equals("slow")) {
+      Thread.sleep(1000000);
     }
     log.info("请求{}", hello);
     return "go" + hello;

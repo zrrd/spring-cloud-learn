@@ -21,5 +21,11 @@ public interface GoService {
   @GetMapping("/go")
   String go(@RequestParam(value = "hello") String hello);
 
+  /**
+   * @param hello 游戏id
+   * @return 返回
+   */
+  @GetMapping("/go1")
+  String go1(@RequestParam(value = "hello") String hello);
 
 }

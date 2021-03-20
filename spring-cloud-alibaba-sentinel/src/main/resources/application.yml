@@ -13,5 +13,20 @@ management:
       exposure:
         include: '*'
 feign:
-  sentinel:
+  #sentinel:
+  #  enabled: true
+  hystrix:
     enabled: true
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: true
+        # 错误比率
+        errorThresholdPercentage: 10
+        # 最小请求次数
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000

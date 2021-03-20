@@ -15,4 +15,9 @@ public class GoFeignClientFallbackImpl implements GoService {
   public String go(String id) {
     return "查询出错";
   }
+
+  @Override
+  public String go1(String hello) {
+    return "fall";
+  }
 }
