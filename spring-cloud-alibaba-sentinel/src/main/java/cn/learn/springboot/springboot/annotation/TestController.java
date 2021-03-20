@@ -1,68 +1,28 @@
 package cn.learn.springboot.springboot.annotation;
 
-import com.alibaba.csp.sentinel.Entry;
-import com.alibaba.csp.sentinel.EntryType;
-import com.alibaba.csp.sentinel.SphU;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author shaoyijiong
- * @date 2019/5/24
+ * @date 2021/3/20
  */
 @RestController
 public class TestController {
 
-  private final TestService service;
+  @Autowired
+  private GoService goService;
 
-  public TestController(TestService service) {
-    this.service = service;
+  @RequestMapping("test-feign")
+  public String testFeign(String hello) {
+    return goService.go(hello);
   }
 
-  @GetMapping("/foo")
-  public String apiFoo(@RequestParam(required = false) Long t) throws Exception {
-    if (t == null) {
-      t = System.currentTimeMillis();
-    }
-    service.test();
-    return service.hello(t);
-  }
-
-  @GetMapping("/baz/{name}")
-  public String apiBaz(@PathVariable("name") String name) {
-    return service.helloAnother(name);
-  }
-
-
-  @GetMapping("timeout")
-  public String timeout() {
-    return service.timeoutGo();
-  }
-
-  @GetMapping("/a")
-  public String a() {
-    return "a";
-  }
-
-
-  @GetMapping("/param")
-  public String paramLimit(int uid) {
-    Entry entry = null;
-    String retVal;
-    try {
-      // 只对参数uid进行限流，参数ip不进行限制
-      entry = SphU.entry("param", EntryType.IN, 1, uid);
-      retVal = "passed";
-    } catch (BlockException e) {
-      retVal = "blocked";
-    } finally {
-      if (entry != null) {
-        entry.exit();
-      }
-    }
-    return retVal;
+  @SentinelResource(value = "o1")
+  @RequestMapping("test-rs")
+  public String rs1() {
+    return "hello world";
   }
 }

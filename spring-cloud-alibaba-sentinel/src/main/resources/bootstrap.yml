@@ -1,7 +1,7 @@
 #不能写在application.yml 否则无法读取配置
 spring:
   application:
-    name: service-provider
+    name: service-sentinel
   cloud:
     nacos:
       config:

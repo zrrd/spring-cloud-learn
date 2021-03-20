@@ -1,14 +1,17 @@
 server:
-  port: 8085
+  port: 18085
 spring:
   application:
     name: sentinel-learn
   cloud:
     sentinel:
       transport:
-        dashboard: 127.0.0.1:8080
+        dashboard: localhost:8080
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+feign:
+  sentinel:
+    enabled: true
