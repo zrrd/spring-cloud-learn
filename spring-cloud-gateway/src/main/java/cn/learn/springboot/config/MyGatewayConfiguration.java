@@ -66,7 +66,7 @@ public class MyGatewayConfiguration {
   @Primary
   @Bean
   @Order(-1)
-  public GlobalFilter sentinelGatewayFilter() {
+  public GlobalFilter mySentinelGatewayFilter() {
     return new SentinelGatewayFilter();
   }
 
@@ -158,7 +158,11 @@ public class MyGatewayConfiguration {
         )
     );
 
-    rules.add(new GatewayFlowRule("another_customized_api").setCount(1)
+    // ip 一秒内一次触发限流
+    //rules.add(new GatewayFlowRule("another_customized_api").setCount(1).setResourceMode(SentinelGatewayConstants.RESOURCE_MODE_CUSTOM_API_NAME)
+    //    .setIntervalSec(1).setParamItem(new GatewayParamFlowItem().setParseStrategy(SentinelGatewayConstants.PARAM_PARSE_STRATEGY_CLIENT_IP)));
+
+    rules.add(new GatewayFlowRule("another_customized_api").setCount(2)
         .setIntervalSec(1));
     GatewayRuleManager.loadRules(rules);
   }
