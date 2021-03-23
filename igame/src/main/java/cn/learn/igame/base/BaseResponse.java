@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode
 @AllArgsConstructor
-public class BaseResponse<T> implements Response {
+public class BaseResponse<T> implements Response<T> {
 
   /**
    * 响应码，当success为false时，code值代表服务端错误状态.

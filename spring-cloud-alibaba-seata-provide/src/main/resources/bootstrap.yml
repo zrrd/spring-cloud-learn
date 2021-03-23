@@ -1,0 +1,9 @@
+#不能写在application.yml 否则无法读取配置
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 121.36.162.179:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 121.36.162.179:8848
