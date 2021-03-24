@@ -1,8 +1,8 @@
 server:
-  port: 18080
+  port: 18081
 spring:
   application:
-    name: sca-provider
+    name: comsumer-provider
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://121.36.136.81:3306/seata?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -11,7 +11,7 @@ spring:
   cloud:
     alibaba:
       seata:
-        tx-service-group: sca-provider-seata-tx-service-group
+        tx-service-group: sca-consumer-seata-tx-service-group
 
 
 mybatis:

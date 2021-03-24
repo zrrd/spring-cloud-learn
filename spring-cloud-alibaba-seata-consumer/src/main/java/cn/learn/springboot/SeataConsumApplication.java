@@ -16,9 +16,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication
 @MapperScan("cn.learn.springboot.mapper")
-public class SeataProApplication {
+public class SeataConsumApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SeataProApplication.class, args);
+    SpringApplication.run(SeataConsumApplication.class, args);
   }
 }
