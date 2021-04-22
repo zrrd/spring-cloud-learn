@@ -77,6 +77,7 @@
         <module>spring-cloud-alibaba-sentinel</module>
         <module>spring-cloud-alibaba-seata-provide</module>
         <module>spring-cloud-alibaba-seata-consumer</module>
+        <module>spring-cloud-apollo</module>
     </modules>
 
     <build>

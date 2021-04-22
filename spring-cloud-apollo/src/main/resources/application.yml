@@ -1,0 +1,12 @@
+server:
+  port: 10902
+#应用id
+app:
+  id: test
+#配置地址和boot应用自动装配
+apollo:
+  bootstrap:
+    enabled: true
+    #使用不同的namespaces
+    namespaces: application,ac.yml
+  meta: http://127.0.0.1:8080
