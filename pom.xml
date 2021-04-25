@@ -78,6 +78,8 @@
         <module>spring-cloud-alibaba-seata-consumer</module>
         <module>spring-cloud-apollo</module>
         <module>spring-cloud-sharding-jdbc</module>
+        <module>spring-cloud-alibaba-hfs-provide</module>
+        <module>spring-cloud-alibaba-hfs-consumer</module>
     </modules>
 
     <build>
