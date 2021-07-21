@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * .
  * @author syj
  */
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 @RibbonClient("a")
 @EnableEurekaClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)

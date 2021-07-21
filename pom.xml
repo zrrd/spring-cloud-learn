@@ -78,8 +78,12 @@
         <module>spring-cloud-alibaba-seata-consumer</module>
         <module>spring-cloud-apollo</module>
         <module>spring-cloud-sharding-jdbc</module>
-        <module>spring-cloud-alibaba-hfs-provide</module>
-        <module>spring-cloud-alibaba-hfs-consumer</module>
+        <module>sentinel</module>
+        <module>sentinel/sentinel-dubbo-provide-1</module>
+        <module>sentinel/sentinel-dubbo-provide-2</module>
+        <module>sentinel/sentinel-dubbo-consumer-1</module>
+        <module>sentinel/sentinel-dubbo-consumer-2</module>
+        <module>sentinel/dubbo-api</module>
     </modules>
 
     <build>
