@@ -1,0 +1,14 @@
+
+spring:
+  application:
+    name: dubbo-consumer-2
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+dubbo:
+  registry:
+    address: nacos://121.36.136.81:8848
+server:
+  port: 8092
