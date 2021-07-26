@@ -1,2 +1,25 @@
+# Dubbo Application
+## The default value of dubbo.application.name is ${spring.application.name}
+## dubbo.application.name=${spring.application.name}
+spring:
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+  application:
+    name: dubbo-provider
+dubbo:
+  # Dubbo Protocol
+  protocol:
+    name: dubbo
+    ## Random port
+    port: -1
+  registry:
+    ## Dubbo Registry
+    address: nacos://121.36.136.81:8848
+  # Base packages to scan Dubbo Component: @org.apache.dubbo.config.annotation.Service
+  scan:
+    base-packages: cn.learn.dubbo
 server:
   port: 8081

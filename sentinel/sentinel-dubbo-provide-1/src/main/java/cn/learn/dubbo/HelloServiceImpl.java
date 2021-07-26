@@ -1,13 +1,13 @@
 package cn.learn.dubbo;
 
 import cn.learn.HelloService;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 
 /**
  * @author shaoyijiong
  * @date 2021/7/20
  */
-@Service(version = "1.0.0")
+@DubboService(version = "1.0.0")
 public class HelloServiceImpl implements HelloService {
     
     @Override
