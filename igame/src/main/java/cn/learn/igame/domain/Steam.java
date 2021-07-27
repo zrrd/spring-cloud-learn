@@ -26,10 +26,4 @@ public class Steam extends Model<Steam> {
   private Integer userId;
 
   private Date createTime;
-
-
-  @Override
-  protected Serializable pkVal() {
-    return id;
-  }
 }

@@ -26,9 +26,4 @@ public class User extends Model<User> {
   private Double money;
 
   private String prefer;
-
-  @Override
-  protected Serializable pkVal() {
-    return id;
-  }
 }

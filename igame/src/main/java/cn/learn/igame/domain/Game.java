@@ -33,11 +33,6 @@ public class Game extends Model<Game> {
 
   private String image;
 
-  @Override
-  protected Serializable pkVal() {
-    return id;
-  }
-
   public Game(Integer id) {
     this.id = id;
   }

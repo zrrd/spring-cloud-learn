@@ -2,7 +2,6 @@ package cn.learn.igame.config;
 
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.MybatisXMLLanguageDriver;
-import com.baomidou.mybatisplus.core.toolkit.TableInfoHelper;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
@@ -21,8 +20,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
  * @since 2018/6/30
  */
 @Configuration
-@MapperScan(basePackages = {"cn.learn.igame.domain.repository",
-    "cn.learn.igame.mapper"})
+@MapperScan(basePackages = {"cn.learn.igame.domain.repository", "cn.learn.igame.mapper"})
 public class MybatisPlusConfig {
 
   /**
@@ -51,7 +49,6 @@ public class MybatisPlusConfig {
     //驼峰下划线映射
     configuration.setMapUnderscoreToCamelCase(true);
     sqlSessionFactory.setConfiguration(configuration);
-    TableInfoHelper.initSqlSessionFactory(sqlSessionFactory.getObject());
     return sqlSessionFactory.getObject();
   }
 
