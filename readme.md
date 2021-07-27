@@ -12,7 +12,7 @@ SpringCloud
 8. zuul 服务网关 用于过滤与路由
 9. feign 通过feign进一步封装微服务直接的调用关系
 
-### spring cloud alibab
+### spring cloud alibaba
 
 1. dubbo dubbo + nacos + sentinel
 2. provide nacos注册中心
@@ -30,7 +30,7 @@ SpringCloud
 
 修改host
 
-# learn-springcloud
+# learn-spring-cloud
 
 > 127.0.0.1 eureka7001.com
 > 127.0.0.1 eureka7002.com
