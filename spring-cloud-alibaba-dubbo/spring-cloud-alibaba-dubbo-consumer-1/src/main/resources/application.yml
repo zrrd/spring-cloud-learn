@@ -12,3 +12,15 @@ dubbo:
     address: nacos://121.36.136.81:8848
 server:
   port: 8091
+  ## 配置 tomcat 请求线程池为10 方便显示效果
+  tomcat:
+    # 接受最大请求数
+    # accept-count:
+    threads:
+        max: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
