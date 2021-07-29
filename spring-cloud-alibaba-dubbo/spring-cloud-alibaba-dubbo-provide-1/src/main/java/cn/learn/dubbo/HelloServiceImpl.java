@@ -4,6 +4,7 @@ import cn.learn.HelloService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 import java.util.concurrent.TimeUnit;
+import org.apache.dubbo.rpc.RpcException;
 
 /**
  * @author shaoyijiong
@@ -19,6 +20,7 @@ public class HelloServiceImpl implements HelloService {
 
   @Override
   public String lazy(Integer second) {
+
     try {
       TimeUnit.SECONDS.sleep(second);
     } catch (InterruptedException e) {

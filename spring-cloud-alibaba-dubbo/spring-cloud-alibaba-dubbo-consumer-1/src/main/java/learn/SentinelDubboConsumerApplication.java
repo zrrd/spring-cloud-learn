@@ -1,10 +1,6 @@
 package learn;
 
 import cn.learn.HelloService;
-import com.alibaba.csp.sentinel.concurrent.NamedThreadFactory;
-import com.alibaba.csp.sentinel.slots.block.SentinelRpcException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +24,10 @@ public class SentinelDubboConsumerApplication {
   static class TestController {
 
     @DubboReference(version = "1.0.0", timeout = 20000)
-    HelloService helloService;
+    //@DubboReference(version = "1.0.0" , stub = "learn.HelloServiceStub")
+    //@DubboReference(version = "1.0.0", mock = "learn.HelloServiceMock") //本地伪装 只对RpcException
+    //@DubboReference(version = "1.0.0", mock = "return empty") // 返回默认基本类型的默认值
+    private HelloService helloService;
 
     @GetMapping("/hello")
     public String test() {

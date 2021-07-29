@@ -110,4 +110,27 @@ public class RequestTest {
     }
     TimeUnit.SECONDS.sleep(100);
   }
+
+  /**
+   * 熔断降级配置
+   */
+  @Test
+  public void consumerCircuitBreaking() throws InterruptedException {
+    int size = 10;
+    ExecutorService executor = Executors.newFixedThreadPool(size);
+    CountDownLatch countDownLatch = new CountDownLatch(size);
+    for (int i = 0; i < size; i++) {
+      executor.submit(() -> {
+        try {
+          countDownLatch.await();
+          String result = restTemplate.getForObject("http://127.0.0.1:8091/lazy", String.class);
+          System.out.println("hello result:" + result);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      });
+      countDownLatch.countDown();
+    }
+    TimeUnit.SECONDS.sleep(10);
+  }
 }
