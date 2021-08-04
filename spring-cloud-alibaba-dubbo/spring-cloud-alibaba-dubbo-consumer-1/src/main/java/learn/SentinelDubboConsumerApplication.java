@@ -40,5 +40,11 @@ public class SentinelDubboConsumerApplication {
       log.info(Thread.currentThread().getName());
       return helloService.lazy(10);
     }
+
+    @GetMapping("/hello2")
+    public String test(String name) {
+      log.info(Thread.currentThread().getName());
+      return helloService.hello(name);
+    }
   }
 }

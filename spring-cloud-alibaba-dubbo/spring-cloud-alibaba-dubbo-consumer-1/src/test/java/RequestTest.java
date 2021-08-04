@@ -133,4 +133,40 @@ public class RequestTest {
     }
     TimeUnit.SECONDS.sleep(10);
   }
+
+  /**
+   * 热点参数 设定参数拦截为2的话
+   * name1 有8个被拦截了  而name1都通过了
+   */
+  @Test
+  public void provideFlowControl() throws InterruptedException {
+    int size = 12;
+    ExecutorService executor = Executors.newFixedThreadPool(size);
+    CountDownLatch countDownLatch = new CountDownLatch(size);
+    for (int i = 0; i < 10; i++) {
+      executor.submit(() -> {
+        try {
+          countDownLatch.await();
+          String result = restTemplate.getForObject("http://127.0.0.1:8091/hello2?name={name}", String.class, "name1");
+          System.out.println("hello result:" + result);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      });
+      countDownLatch.countDown();
+    }
+    for (int i = 0; i < 2; i++) {
+      executor.submit(() -> {
+        try {
+          countDownLatch.await();
+          String result = restTemplate.getForObject("http://127.0.0.1:8091/hello2?name={name}", String.class, "name2");
+          System.out.println("hello result:" + result);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      });
+      countDownLatch.countDown();
+    }
+    TimeUnit.SECONDS.sleep(10);
+  }
 }

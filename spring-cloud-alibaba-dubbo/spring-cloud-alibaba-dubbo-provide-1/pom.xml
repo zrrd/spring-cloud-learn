@@ -41,5 +41,9 @@
       <groupId>com.alibaba.csp</groupId>
       <artifactId>sentinel-apache-dubbo-adapter</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-datasource-nacos</artifactId>
+    </dependency>
   </dependencies>
 </project>
