@@ -23,7 +23,8 @@ public class SentinelDubboConsumerApplication {
   @RestController
   static class TestController {
 
-    @DubboReference(version = "1.0.0", timeout = 20000)
+    @DubboReference(version = "1.0.0", cache = "threadlocal")
+    //@DubboReference(version = "1.0.0", timeout = 20000)
     //@DubboReference(version = "1.0.0" , stub = "learn.HelloServiceStub")
     //@DubboReference(version = "1.0.0", mock = "learn.HelloServiceMock") //本地伪装 只对RpcException
     //@DubboReference(version = "1.0.0", mock = "return empty") // 返回默认基本类型的默认值
@@ -45,6 +46,16 @@ public class SentinelDubboConsumerApplication {
     public String test(String name) {
       log.info(Thread.currentThread().getName());
       return helloService.hello(name);
+    }
+
+    @GetMapping("/test-cache")
+    public String testCache(String name) {
+      log.info(Thread.currentThread().getName());
+      for (int i = 0; i < 10; i++) {
+        System.out.println(helloService.hello(name));
+
+      }
+      return "";
     }
   }
 }

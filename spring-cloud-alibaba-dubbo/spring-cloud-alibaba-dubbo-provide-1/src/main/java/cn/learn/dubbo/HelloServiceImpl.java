@@ -1,8 +1,10 @@
 package cn.learn.dubbo;
 
 import cn.learn.HelloService;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.apache.dubbo.rpc.RpcException;
 
@@ -15,7 +17,9 @@ public class HelloServiceImpl implements HelloService {
 
   @Override
   public String hello(String name) {
-    return "hello " + name;
+    String s = "hello " + name + RandomUtils.nextInt(1, 10);
+    System.out.println(s);
+    return s;
   }
 
   @Override
